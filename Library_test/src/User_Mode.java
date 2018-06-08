@@ -1,13 +1,20 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class User_Mode extends Library {
-
-	int id_index;
-
-	public User_Mode(int index) throws IOException {
-		super();
+public class User_Mode{
+	private User client;
+	private int id_index;
+	private ArrayList<User> userlist;
+	private ArrayList<Book> booklist;
+	
+	public User_Mode(int index, ArrayList<User> userlist, ArrayList<Book> booklist) throws IOException {
 		this.id_index = index;
+		this.userlist = userlist;
+		this.booklist = booklist;
+		client = new User(userlist.get(id_index).getID(), userlist.get(id_index).getPW(), userlist.get(id_index).getname(), userlist.get(id_index).getbirthday(), userlist.get(id_index).getphone(), 
+				userlist.get(id_index).get_rentlist(0), userlist.get(id_index).get_rentlist(1), userlist.get(id_index).get_rentlist(2), userlist.get(id_index).get_renttime(0), 
+				userlist.get(id_index).get_renttime(1), userlist.get(id_index).get_renttime(2), userlist.get(id_index).get_fee(0), userlist.get(id_index).get_fee(1), userlist.get(id_index).get_fee(2));		
 		
 		System.out.println("유저모드 시작");
 		System.out.println("번호를 입력하시오(1:책검색 2.책목록 3.내책 4.내정보)");
@@ -37,6 +44,7 @@ public class User_Mode extends Library {
 		}
 		}
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	// 책의 목록을 출력하는 기능! javaFX로 알아서 구현해줘 ㅎㅎ
@@ -69,7 +77,8 @@ public class User_Mode extends Library {
 		String name;
 		System.out.println("이름을 수정하시오");
 		name = scan.nextLine();
-		userlist.get(id_index).setname(name);
+		client.setname(name);
+		userlist.set(id_index, client);
 	}
 
 	public void user_birthmodify() {
@@ -77,7 +86,8 @@ public class User_Mode extends Library {
 		String birth;
 		System.out.println("생일을 수정하시오");
 		birth = scan.nextLine();
-		userlist.get(id_index).setname(birth);
+		client.setbirthday(birth);
+		userlist.set(id_index, client);
 	}
 
 	public void user_phonemodify() {
@@ -85,7 +95,8 @@ public class User_Mode extends Library {
 		String phone;
 		System.out.println("핸드폰번호를 수정하시오");
 		phone = scan.nextLine();
-		userlist.get(id_index).setname(phone);
+		client.setphone(phone);
+		userlist.set(id_index, client);
 	}
 
 	public void booklist() {

@@ -1,39 +1,49 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Admin_mode extends Library {
+public class Admin_mode {
+	private ArrayList<User> userlist;
+	private ArrayList<Book> booklist;
 
-	public Admin_mode() throws IOException {
-		super();
+	public Admin_mode(ArrayList<User> userlist, ArrayList<Book> booklist) {
+		this.userlist = userlist;
+		this.booklist = booklist;
 
-		System.out.println("번호를 입력하시오");
 		Scanner scan = new Scanner(System.in);
 		String select;
-		select = scan.nextLine();
 
-		switch (Integer.valueOf(select)) {
-		case 1:
-			booklist();
-			break;
-		case 2:
-			managebook();
-			break;
-		case 3:
-			manageuser();
-		case 4:
-			user_list();
-		case 5:
-			issued_user();
-		default:
-			break;
+		while (true) {
+			System.out.println("1.booklist 2.managebook 3. manageruser 4.userlist 5.issued user");
+			select = scan.nextLine();
+			switch (Integer.valueOf(select)) {
+			case 1:
+				booklist();
+				break;
+			case 2:
+				managebook();
+				break;
+			case 3:
+				manageuser();
+				break;
+			case 4:
+				user_list();
+				break;
+			case 5:
+				issued_user();
+				break;
+			case 0:
+				return;
+			default:
+				break;
+			}
 		}
-		// TODO Auto-generated constructor stub
 	}
 
 	public void manageuser() {
 		int user_index = userSearch();
 
-		System.out.println("번호를 입력하시오");
+		System.out.println("1.rentbook 2.returnbook");
 		Scanner scan = new Scanner(System.in);
 		String select;
 		select = scan.nextLine();
@@ -105,12 +115,12 @@ public class Admin_mode extends Library {
 
 		for (int i = 0; i < 3; i++) {
 			if (userlist.get(user_index).get_rentlist(i) == booklist.get(return_bookindex).getcode()) {
+				fee = latefee(user_index, return_bookindex);
 				userlist.get(user_index).set_rentlist(i, 0);
 				userlist.get(user_index).set_renttime(i, 0);
-				fee = latefee(i, return_bookindex);
+				System.out.printf("연체료 %d원 지불하였습니다", fee);
 				if (fee > 0) {
-					userlist.get(user_index).set_fee(i, 0);
-					System.out.printf("연체료 %d원 지불하였습니다", fee);
+					userlist.get(user_index).set_fee(user_index, 0);
 				}
 			}
 		}
@@ -123,9 +133,10 @@ public class Admin_mode extends Library {
 		long latefee = 0;
 		long time = System.currentTimeMillis();
 		long temp = 0;
+
 		for (int i = 0; i < 3; i++) {
 			if (userlist.get(user_index).get_rentlist(i) == booklist.get(book_index).getcode()) {
-				temp = time - userlist.get(user_index).get_renttime(i);
+				temp = (time - userlist.get(user_index).get_renttime(i)) / 1000;
 				if (temp > 10) {
 					latefee = (temp - 10) * 100;
 					userlist.get(user_index).set_fee(i, latefee);
@@ -133,6 +144,22 @@ public class Admin_mode extends Library {
 			}
 		}
 		return latefee;
+	}
+
+	public void total_latefee(int user_index) {
+		long latefee = 0;
+		long time = System.currentTimeMillis();
+		long temp = 0;
+
+		for (int i = 0; i < 3; i++) {
+			if (userlist.get(user_index).get_rentlist(i) != 0) {
+				temp = (time - userlist.get(user_index).get_renttime(i)) / 1000;
+				if (temp > 10) {
+					latefee = (temp - 10) * 100;
+					userlist.get(user_index).set_fee(i, latefee);
+				}
+			}
+		}
 	}
 
 	public int userSearch() {
@@ -145,6 +172,7 @@ public class Admin_mode extends Library {
 		for (int i = 0; i < userlist.size(); i++) {
 			if (id.equals(userlist.get(i).getID())) {
 				index = i;
+				total_latefee(index);
 				System.out.print(userlist.get(index).getID());
 				System.out.print(userlist.get(index).getname());
 				System.out.print(userlist.get(index).getbirthday());
@@ -158,7 +186,7 @@ public class Admin_mode extends Library {
 	}
 
 	public void managebook() {
-		System.out.println("번호를 입력하시오");
+		System.out.println("1.bookadd 2.booksetting 3.bookdelete");
 		Scanner scan = new Scanner(System.in);
 		String select;
 		select = scan.nextLine();
@@ -288,7 +316,7 @@ public class Admin_mode extends Library {
 	public int bookSearch() {
 		Scanner scan = new Scanner(System.in);
 		String search;
-		System.out.println("번호를 입력하시오");
+		System.out.println("1.이름으로찾기 2.코드로찾기");
 		search = scan.nextLine();
 
 		switch (Integer.valueOf(search)) {
@@ -348,6 +376,7 @@ public class Admin_mode extends Library {
 
 	public void issued_user() {
 		for (int i = 0; i < userlist.size(); i++) {
+			total_latefee(i);
 			if (userlist.get(i).get_totalfee() > 0) {
 				System.out.print(userlist.get(i).getID());
 				System.out.print(userlist.get(i).getname());
@@ -358,6 +387,7 @@ public class Admin_mode extends Library {
 
 	public void user_list() {
 		for (int i = 0; i < userlist.size(); i++) {
+			total_latefee(i);
 			System.out.print(userlist.get(i).getID());
 			System.out.print(userlist.get(i).getname());
 			System.out.print(userlist.get(i).getbirthday());

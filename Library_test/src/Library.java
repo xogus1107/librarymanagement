@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Library {
-	public Scanner sc;
-	public String today_date; // Ex: 2018/05/19
-	public boolean Admin = true;
-	public boolean User = true;
-	ArrayList<User> userlist = new ArrayList<>();
-	ArrayList<Book> booklist = new ArrayList<>();
+	private Scanner sc;
+	private String today_date; // Ex: 2018/05/19
+	private boolean Admin = true;
+	private boolean User = true;
+	private ArrayList<User> userlist = new ArrayList<>();
+	private ArrayList<Book> booklist = new ArrayList<>();
 
 	public Library() throws IOException {
 		BufferedReader bufferUser = new BufferedReader(new FileReader("user.txt"));
@@ -78,6 +78,7 @@ public class Library {
 				lib.signup();
 				break;
 			case 0:
+				
 				BufferedWriter bufUser = new BufferedWriter(new FileWriter("user.txt"));
 				BufferedWriter bufBook = new BufferedWriter(new FileWriter("book.txt"));
 				for(int i = 0; i < lib.userlist.size(); i++)
@@ -95,7 +96,8 @@ public class Library {
 					bufUser.write(lib.userlist.get(i).get_renttime(2) + " ");
 					bufUser.write(lib.userlist.get(i).get_fee(0) + " ");
 					bufUser.write(lib.userlist.get(i).get_fee(1) + " ");
-					bufUser.write(lib.userlist.get(i).get_fee(2) + "\n");
+					bufUser.write(lib.userlist.get(i).get_fee(2) + "");
+					bufUser.newLine();
 				}
 				
 				for(int i = 0; i < lib.booklist.size(); i++)
@@ -104,7 +106,8 @@ public class Library {
 					bufBook.write(lib.booklist.get(i).getname() + " ");
 					bufBook.write(lib.booklist.get(i).getwriter() + " ");
 					bufBook.write(lib.booklist.get(i).getpublisher() + " ");
-					bufBook.write(lib.booklist.get(i).getstate() + "\n");
+					bufBook.write(lib.booklist.get(i).getstate() + "");
+					bufBook.newLine();
 				}
 				
 				bufUser.close();
@@ -118,7 +121,7 @@ public class Library {
 	}
 
 	public void inputlogin() throws IOException {
-		Login login = new Login();
+		Login login = new Login(userlist);
 		String id;
 		String pw;
 
@@ -134,7 +137,7 @@ public class Library {
 			System.out.println("관리자아이디가 맞습니다");
 			if (login.admin_pw_Check(pw) == true) {
 				System.out.println("관리자모드 실행!");
-				Admin_mode mode = new Admin_mode();
+				Admin_mode mode = new Admin_mode(userlist, booklist);
 			} else {
 				System.out.println("패스워드가 틀렸습니다");
 			}
@@ -143,7 +146,7 @@ public class Library {
 			if (login.pw_Check(pw, login.id_index) == true) {
 
 				System.out.println("로그인 완료!");
-				User_Mode mode = new User_Mode(login.id_index);
+				User_Mode mode = new User_Mode(login.id_index, userlist, booklist);
 			} else {
 				System.out.println("패스워드가 틀렸습니다");
 			}
