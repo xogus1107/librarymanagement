@@ -1,10 +1,10 @@
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Login extends Library {
-	public Login() throws IOException {
-		super();
-		// TODO Auto-generated constructor stub
+public class Login{
+	private ArrayList<User> userlist;
+	public Login(ArrayList<User> userlist){
+		this.userlist = userlist;
 	}
 
 	int id_index = -1;
