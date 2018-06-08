@@ -118,9 +118,9 @@ public class Admin_mode {
 				fee = latefee(user_index, return_bookindex);
 				userlist.get(user_index).set_rentlist(i, 0);
 				userlist.get(user_index).set_renttime(i, 0);
-				System.out.printf("연체료 %d원 지불하였습니다", fee);
 				if (fee > 0) {
-					userlist.get(user_index).set_fee(user_index, 0);
+					System.out.printf("연체료 %d원 지불하였습니다", fee);
+					userlist.get(user_index).set_fee(i, 0);
 				}
 			}
 		}
