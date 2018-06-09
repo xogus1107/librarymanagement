@@ -2,11 +2,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Admin_mode {
+public class Admin_Mode {
 	private ArrayList<User> userlist;
 	private ArrayList<Book> booklist;
 
-	public Admin_mode(ArrayList<User> userlist, ArrayList<Book> booklist) {
+	public Admin_Mode(ArrayList<User> userlist, ArrayList<Book> booklist) {
 		this.userlist = userlist;
 		this.booklist = booklist;
 
@@ -67,11 +67,11 @@ public class Admin_mode {
 		long time = System.currentTimeMillis();
 
 		if (booklist.get(book_index).getstate() == 1) {
-			System.out.println("ÀÌ¹Ì ´ë¿©ÁßÀÎ Ã¥ ÀÔ´Ï´Ù");
+			System.out.println("ì´ë¯¸ ëŒ€ì—¬ì¤‘ì¸ ì±… ì…ë‹ˆë‹¤");
 			return;
 		}
 
-		// Ã¥ ºô¸° °¹¼ö Ã¼Å©, 3°³ÀÌ»óÀÌ¸é ¸øºô¸²
+		// ì±… ë¹Œë¦° ê°¯ìˆ˜ ì²´í¬, 3ê°œì´ìƒì´ë©´ ëª»ë¹Œë¦¼
 		for (int i = 0; i < 3; i++) {
 			if (userlist.get(user_index).get_rentlist(i) != 0) {
 				rent_count++;
@@ -79,11 +79,11 @@ public class Admin_mode {
 		}
 
 		if (rent_count == 3) {
-			System.out.println("Ã¥À» ´õ ÀÌ»ó ºô¸± ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ì±…ì„ ë” ì´ìƒ ë¹Œë¦´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
 
-		// °ªÀÌ 0ÀÎ ÀÎµ¦½º¸¦ Ã£¾Æ¼­ Ã¥ÀÇ ÄÚµå°ªÀ» ÀúÀå
+		// ê°’ì´ 0ì¸ ì¸ë±ìŠ¤ë¥¼ ì°¾ì•„ì„œ ì±…ì˜ ì½”ë“œê°’ì„ ì €ì¥
 		for (int i = 0; i < 3; i++) {
 			if (userlist.get(user_index).get_rentlist(i) == 0) {
 				userlist.get(user_index).set_rentlist(i, booklist.get(book_index).getcode());
@@ -119,7 +119,7 @@ public class Admin_mode {
 				userlist.get(user_index).set_rentlist(i, 0);
 				userlist.get(user_index).set_renttime(i, 0);
 				if (fee > 0) {
-					System.out.printf("¿¬Ã¼·á %d¿ø ÁöºÒÇÏ¿´½À´Ï´Ù", fee);
+					System.out.printf("ì—°ì²´ë£Œ %dì› ì§€ë¶ˆí•˜ì˜€ìŠµë‹ˆë‹¤", fee);
 					userlist.get(user_index).set_fee(i, 0);
 				}
 			}
@@ -127,8 +127,8 @@ public class Admin_mode {
 		booklist.get(return_bookindex).setState(0);
 	}
 
-	// 6¿ù 7ÀÏ Ã¥ ¹İ³³ ±îÁö ¿Ï·á ±Ùµ¥ À§¿¡ ÀÖ´Â Ã¥ ¹İ³³ ÇÔ¼ö¿¡¼­ ¿¬Ã¼·á ÀúÀå ÇÏ´Â ºÎºĞÀ» ±¸ÇöÇØ¾ßÇÔ latefee ÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿©
-	// ¿¬Ã¼·á¸¦ ÂüÁ¶ÇÏ´Â ÇÔ¼öµé(userinfo, returnbooks)¿¡ ÃÖ½ÅÈ­µÈ ¿¬Ã¼·á¸¦ ÀúÀå ÇÒ ¼ö ÀÖ°Ô ÇØ¾ßÇÔ
+	// 6ì›” 7ì¼ ì±… ë°˜ë‚© ê¹Œì§€ ì™„ë£Œ ê·¼ë° ìœ„ì— ìˆëŠ” ì±… ë°˜ë‚© í•¨ìˆ˜ì—ì„œ ì—°ì²´ë£Œ ì €ì¥ í•˜ëŠ” ë¶€ë¶„ì„ êµ¬í˜„í•´ì•¼í•¨ latefee í•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬
+	// ì—°ì²´ë£Œë¥¼ ì°¸ì¡°í•˜ëŠ” í•¨ìˆ˜ë“¤(userinfo, returnbooks)ì— ìµœì‹ í™”ëœ ì—°ì²´ë£Œë¥¼ ì €ì¥ í•  ìˆ˜ ìˆê²Œ í•´ì•¼í•¨
 	public long latefee(int user_index, int book_index) {
 		long latefee = 0;
 		long time = System.currentTimeMillis();
@@ -166,7 +166,7 @@ public class Admin_mode {
 		Scanner scan = new Scanner(System.in);
 		int index;
 		String id;
-		System.out.println("ID¸¦ ÀÔ·ÂÇÏ½Ã¿À");
+		System.out.println("IDë¥¼ ì…ë ¥í•˜ì‹œì˜¤");
 		id = scan.nextLine();
 
 		for (int i = 0; i < userlist.size(); i++) {
@@ -181,7 +181,7 @@ public class Admin_mode {
 				return index;
 			}
 		}
-		System.out.println("ÀÏÄ¡ÇÏ´Â ID°¡ ¾ø½À´Ï´Ù");
+		System.out.println("ì¼ì¹˜í•˜ëŠ” IDê°€ ì—†ìŠµë‹ˆë‹¤");
 		return -1;
 	}
 
@@ -223,16 +223,16 @@ public class Admin_mode {
 		String writer;
 		String publisher;
 		int state = 0;
-		System.out.println("ÄÚµå¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì½”ë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		code = scan.nextLine();
-		System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”");
 		name = scan.nextLine();
-		System.out.println("ÀúÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì €ìë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		writer = scan.nextLine();
-		System.out.println("ÃâÆÇ»ç¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì¶œíŒì‚¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		publisher = scan.nextLine();
 
-		// Áßº¹ ÄÚµå ¹× Ã¥ Á¦¸ñ ¿¹¿ÜÃ³¸®
+		// ì¤‘ë³µ ì½”ë“œ ë° ì±… ì œëª© ì˜ˆì™¸ì²˜ë¦¬
 		for (int i = 0; i < booklist.size(); i++) {
 			if (Integer.valueOf(code) == booklist.get(i).getcode()) {
 				return;
@@ -242,7 +242,7 @@ public class Admin_mode {
 			}
 		}
 		booklist.add(new Book(Integer.valueOf(code), name, writer, publisher, 0));
-		// Ã¥ Ãß°¡ È®ÀÎ Å×½ºÆ®
+		// ì±… ì¶”ê°€ í™•ì¸ í…ŒìŠ¤íŠ¸
 		booklist();
 	}
 
@@ -255,18 +255,18 @@ public class Admin_mode {
 		data_namemodify(index);
 		data_writermodify(index);
 		data_publishermodify(index);
-		// Ã¥ ¼öÁ¤ È®ÀÎ Å×½ºÆ®
+		// ì±… ìˆ˜ì • í™•ì¸ í…ŒìŠ¤íŠ¸
 		booklist();
 	}
 
 	public void data_codemodify(int index) {
 		Scanner scan = new Scanner(System.in);
 		String code;
-		System.out.println("ÄÚµå¸¦ ¼öÁ¤ÇÏ½Ã¿À");
+		System.out.println("ì½”ë“œë¥¼ ìˆ˜ì •í•˜ì‹œì˜¤");
 		code = scan.nextLine();
 		for (int i = 0; i < booklist.size(); i++) {
 			if (Integer.valueOf(code) == booklist.get(i).getcode()) {
-				System.out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â ÄÚµåÀÔ´Ï´Ù");
+				System.out.println("ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì½”ë“œì…ë‹ˆë‹¤");
 				return;
 			}
 		}
@@ -276,11 +276,11 @@ public class Admin_mode {
 	public void data_namemodify(int index) {
 		Scanner scan = new Scanner(System.in);
 		String name;
-		System.out.println("Á¦¸ñÀ» ¼öÁ¤ÇÏ½Ã¿À");
+		System.out.println("ì œëª©ì„ ìˆ˜ì •í•˜ì‹œì˜¤");
 		name = scan.nextLine();
 		for (int i = 0; i < booklist.size(); i++) {
 			if (name.equals(booklist.get(i).getname())) {
-				System.out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â Á¦¸ñÀÔ´Ï´Ù");
+				System.out.println("ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì œëª©ì…ë‹ˆë‹¤");
 				return;
 			}
 		}
@@ -290,7 +290,7 @@ public class Admin_mode {
 	public void data_writermodify(int index) {
 		Scanner scan = new Scanner(System.in);
 		String writer;
-		System.out.println("ÀúÀÚ¸¦ ¼öÁ¤ÇÏ½Ã¿À");
+		System.out.println("ì €ìë¥¼ ìˆ˜ì •í•˜ì‹œì˜¤");
 		writer = scan.nextLine();
 		booklist.get(index).setWriter(writer);
 	}
@@ -298,7 +298,7 @@ public class Admin_mode {
 	public void data_publishermodify(int index) {
 		Scanner scan = new Scanner(System.in);
 		String publisher;
-		System.out.println("ÃâÆÇ»ç¸¦ ¼öÁ¤ÇÏ½Ã¿À");
+		System.out.println("ì¶œíŒì‚¬ë¥¼ ìˆ˜ì •í•˜ì‹œì˜¤");
 		publisher = scan.nextLine();
 		booklist.get(index).setPublisher(publisher);
 	}
@@ -309,14 +309,14 @@ public class Admin_mode {
 			return;
 		}
 		booklist.remove(index);
-		// Ã¥ Á¦°Å È®ÀÎ Å×½ºÆ®
+		// ì±… ì œê±° í™•ì¸ í…ŒìŠ¤íŠ¸
 		booklist();
 	}
 
 	public int bookSearch() {
 		Scanner scan = new Scanner(System.in);
 		String search;
-		System.out.println("1.ÀÌ¸§À¸·ÎÃ£±â 2.ÄÚµå·ÎÃ£±â");
+		System.out.println("1.ì´ë¦„ìœ¼ë¡œì°¾ê¸° 2.ì½”ë“œë¡œì°¾ê¸°");
 		search = scan.nextLine();
 
 		switch (Integer.valueOf(search)) {
@@ -325,7 +325,7 @@ public class Admin_mode {
 		case 2:
 			return code_Search();
 		default:
-			System.out.println("Àß¸øÀÔ·ÂÇß½À´Ï´Ù");
+			System.out.println("ì˜ëª»ì…ë ¥í–ˆìŠµë‹ˆë‹¤");
 			return -1;
 		}
 	}
@@ -334,7 +334,7 @@ public class Admin_mode {
 		Scanner scan = new Scanner(System.in);
 		int index;
 		String name;
-		System.out.println("Á¦¸ñÀ» ÀÔ·ÂÇÏ½Ã¿À");
+		System.out.println("ì œëª©ì„ ì…ë ¥í•˜ì‹œì˜¤");
 		name = scan.nextLine();
 
 		for (int i = 0; i < booklist.size(); i++) {
@@ -348,7 +348,7 @@ public class Admin_mode {
 				return index;
 			}
 		}
-		System.out.println("ÀÏÄ¡ÇÏ´Â Á¦¸ñÀÌ ¾ø½À´Ï´Ù");
+		System.out.println("ì¼ì¹˜í•˜ëŠ” ì œëª©ì´ ì—†ìŠµë‹ˆë‹¤");
 		return -1;
 	}
 
@@ -356,7 +356,7 @@ public class Admin_mode {
 		Scanner scan = new Scanner(System.in);
 		int index;
 		String code;
-		System.out.println("ÄÚµå¸¦ ÀÔ·ÂÇÏ½Ã¿À");
+		System.out.println("ì½”ë“œë¥¼ ì…ë ¥í•˜ì‹œì˜¤");
 		code = scan.nextLine();
 
 		for (int i = 0; i < booklist.size(); i++) {
@@ -370,7 +370,7 @@ public class Admin_mode {
 				return index;
 			}
 		}
-		System.out.println("ÀÏÄ¡ÇÏ´Â ÄÚµå°¡ ¾ø½À´Ï´Ù");
+		System.out.println("ì¼ì¹˜í•˜ëŠ” ì½”ë“œê°€ ì—†ìŠµë‹ˆë‹¤");
 		return -1;
 	}
 
