@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User_Mode{
-	private User client;
 	private int id_index;
 	private ArrayList<User> userlist;
 	private ArrayList<Book> booklist;
@@ -11,10 +10,7 @@ public class User_Mode{
 	public User_Mode(int index, ArrayList<User> userlist, ArrayList<Book> booklist) throws IOException {
 		this.id_index = index;
 		this.userlist = userlist;
-		this.booklist = booklist;
-		client = new User(userlist.get(id_index).getID(), userlist.get(id_index).getPW(), userlist.get(id_index).getname(), userlist.get(id_index).getbirthday(), userlist.get(id_index).getphone(), 
-				userlist.get(id_index).get_rentlist(0), userlist.get(id_index).get_rentlist(1), userlist.get(id_index).get_rentlist(2), userlist.get(id_index).get_renttime(0), 
-				userlist.get(id_index).get_renttime(1), userlist.get(id_index).get_renttime(2), userlist.get(id_index).get_fee(0), userlist.get(id_index).get_fee(1), userlist.get(id_index).get_fee(2));		
+		this.booklist = booklist;		
 		
 		System.out.println("유저모드 시작");
 		System.out.println("번호를 입력하시오(1:책검색 2.책목록 3.내책 4.내정보)");
@@ -60,11 +56,11 @@ public class User_Mode{
 			}
 		}
 
-		System.out.println(userlist.get(id_index).getID()+"  ");
-		System.out.println(userlist.get(id_index).getname()+"  ");
-		System.out.println(userlist.get(id_index).getbirthday()+"  ");
-		System.out.println(userlist.get(id_index).getphone()+"  ");
-		System.out.println(userlist.get(id_index).get_totalfee()+"  ");
+		System.out.println(userlist.get(id_index).getID());
+		System.out.println(userlist.get(id_index).getname());
+		System.out.println(userlist.get(id_index).getbirthday());
+		System.out.println(userlist.get(id_index).getphone());
+		System.out.println(userlist.get(id_index).get_totalfee());
 
 		user_namemodify();
 		user_birthmodify();
@@ -77,8 +73,7 @@ public class User_Mode{
 		String name;
 		System.out.println("이름을 수정하시오");
 		name = scan.nextLine();
-		client.setname(name);
-		userlist.set(id_index, client);
+		userlist.get(id_index).setname(name);
 	}
 
 	public void user_birthmodify() {
@@ -86,8 +81,7 @@ public class User_Mode{
 		String birth;
 		System.out.println("생일을 수정하시오");
 		birth = scan.nextLine();
-		client.setbirthday(birth);
-		userlist.set(id_index, client);
+		userlist.get(id_index).setbirthday(birth);
 	}
 
 	public void user_phonemodify() {
@@ -95,17 +89,16 @@ public class User_Mode{
 		String phone;
 		System.out.println("핸드폰번호를 수정하시오");
 		phone = scan.nextLine();
-		client.setphone(phone);
-		userlist.set(id_index, client);
+		userlist.get(id_index).setphone(phone);
 	}
 
 	public void booklist() {
 		for (int i = 0; i < booklist.size(); i++) {
-			System.out.print(booklist.get(i).getcode()+"  ");
-			System.out.print(booklist.get(i).getname()+"  ");
-			System.out.print(booklist.get(i).getwriter()+"  ");
-			System.out.print(booklist.get(i).getpublisher()+"  ");
-			System.out.println(booklist.get(i).getstate()+"  ");
+			System.out.print(booklist.get(i).getcode());
+			System.out.print(booklist.get(i).getname());
+			System.out.print(booklist.get(i).getwriter());
+			System.out.print(booklist.get(i).getpublisher());
+			System.out.println(booklist.get(i).getstate());
 		}
 	}
 
@@ -144,11 +137,11 @@ public class User_Mode{
 
 		for (int i = 0; i < booklist.size(); i++) {
 			if (name.equals(booklist.get(i).getname())) {
-				System.out.print(booklist.get(i).getcode()+"  ");
-				System.out.print(booklist.get(i).getname()+"  ");
-				System.out.print(booklist.get(i).getwriter()+"  ");
-				System.out.print(booklist.get(i).getpublisher()+"  ");
-				System.out.println(booklist.get(i).getstate()+"  ");
+				System.out.print(booklist.get(i).getcode());
+				System.out.print(booklist.get(i).getname());
+				System.out.print(booklist.get(i).getwriter());
+				System.out.print(booklist.get(i).getpublisher());
+				System.out.println(booklist.get(i).getstate());
 			}
 		}
 		System.out.println("일치하는 제목이 없습니다");
@@ -162,11 +155,11 @@ public class User_Mode{
 
 		for (int i = 0; i < booklist.size(); i++) {
 			if (writer.equals(booklist.get(i).getwriter())) {
-				System.out.print(booklist.get(i).getcode()+"  ");
-				System.out.print(booklist.get(i).getname()+"  ");
-				System.out.print(booklist.get(i).getwriter()+"  ");
-				System.out.print(booklist.get(i).getpublisher()+"  ");
-				System.out.println(booklist.get(i).getstate()+"  ");
+				System.out.print(booklist.get(i).getcode());
+				System.out.print(booklist.get(i).getname());
+				System.out.print(booklist.get(i).getwriter());
+				System.out.print(booklist.get(i).getpublisher());
+				System.out.println(booklist.get(i).getstate());
 			}
 		}
 		System.out.println("일치하는 저자가 없습니다");
@@ -180,11 +173,11 @@ public class User_Mode{
 
 		for (int i = 0; i < booklist.size(); i++) {
 			if (publisher.equals(booklist.get(i).getpublisher())) {
-				System.out.print(booklist.get(i).getcode()+"  ");
-				System.out.print(booklist.get(i).getname()+"  ");
-				System.out.print(booklist.get(i).getwriter()+"  ");
-				System.out.print(booklist.get(i).getpublisher()+"  ");
-				System.out.println(booklist.get(i).getstate()+"  ");
+				System.out.print(booklist.get(i).getcode());
+				System.out.print(booklist.get(i).getname());
+				System.out.print(booklist.get(i).getwriter());
+				System.out.print(booklist.get(i).getpublisher());
+				System.out.println(booklist.get(i).getstate());
 			}
 		}
 		System.out.println("일치하는 출판사가 없습니다");
@@ -198,11 +191,11 @@ public class User_Mode{
 
 		for (int i = 0; i < booklist.size(); i++) {
 			if (Integer.valueOf(code) == booklist.get(i).getcode()) {
-				System.out.print(booklist.get(i).getcode()+"  ");
-				System.out.print(booklist.get(i).getname()+"  ");
-				System.out.print(booklist.get(i).getwriter()+"  ");
-				System.out.print(booklist.get(i).getpublisher()+"  ");
-				System.out.println(booklist.get(i).getstate()+"  ");
+				System.out.print(booklist.get(i).getcode());
+				System.out.print(booklist.get(i).getname());
+				System.out.print(booklist.get(i).getwriter());
+				System.out.print(booklist.get(i).getpublisher());
+				System.out.println(booklist.get(i).getstate());
 			}
 		}
 		System.out.println("일치하는 코드가 없습니다");
@@ -212,9 +205,10 @@ public class User_Mode{
 		long latefee = 0;
 		long time = System.currentTimeMillis();
 		long temp = 0;
+
 		for (int i = 0; i < 3; i++) {
 			if (userlist.get(user_index).get_rentlist(i) == booklist.get(book_index).getcode()) {
-				temp = (time - userlist.get(user_index).get_renttime(i))/1000;
+				temp = (time - userlist.get(user_index).get_renttime(i)) / 1000;
 				if (temp > 10) {
 					latefee = (temp - 10) * 100;
 					userlist.get(user_index).set_fee(i, latefee);
@@ -229,11 +223,11 @@ public class User_Mode{
 			if (userlist.get(id_index).get_rentlist(i) != 0) {
 				for (int j = 0; j < booklist.size(); j++) {
 					if (userlist.get(id_index).get_rentlist(i) == booklist.get(j).getcode()) {
-						System.out.print(booklist.get(j).getcode()+"  ");
-						System.out.print(booklist.get(j).getname()+"  ");
-						System.out.print(booklist.get(j).getwriter()+"  ");
-						System.out.print(booklist.get(j).getpublisher()+"  ");
-						latefee(id_index,j);
+						System.out.print(booklist.get(j).getcode());
+						System.out.print(booklist.get(j).getname());
+						System.out.print(booklist.get(j).getwriter());
+						System.out.print(booklist.get(j).getpublisher());
+						latefee(id_index, j);
 						System.out.println(userlist.get(id_index).get_fee(i));
 					}
 				}
