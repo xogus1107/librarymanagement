@@ -68,6 +68,7 @@ public class Library {
 		}
 		
 		while (true) {
+			System.out.println("1.로그인 2.회원가입 0.프로그램종료");
 			select = scan.nextLine();
 			
 			switch (Integer.valueOf(select)) {

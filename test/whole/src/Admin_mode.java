@@ -102,11 +102,11 @@ public class Admin_mode {
 			if (userlist.get(user_index).get_rentlist(i) != 0) {
 				for (int j = 0; j < booklist.size(); j++) {
 					if (userlist.get(user_index).get_rentlist(i) == booklist.get(j).getcode()) {
-						System.out.print(booklist.get(j).getcode());
-						System.out.print(booklist.get(j).getname());
-						System.out.print(booklist.get(j).getwriter());
-						System.out.print(booklist.get(j).getpublisher());
-						System.out.println(booklist.get(j).getstate());
+						System.out.print(booklist.get(j).getcode()+" ");
+						System.out.print(booklist.get(j).getname()+" ");
+						System.out.print(booklist.get(j).getwriter()+" ");
+						System.out.print(booklist.get(j).getpublisher()+" ");
+						System.out.println(booklist.get(j).getstate()+" ");
 					}
 				}
 			}
@@ -173,11 +173,11 @@ public class Admin_mode {
 			if (id.equals(userlist.get(i).getID())) {
 				index = i;
 				total_latefee(index);
-				System.out.print(userlist.get(index).getID());
-				System.out.print(userlist.get(index).getname());
-				System.out.print(userlist.get(index).getbirthday());
-				System.out.print(userlist.get(index).getphone());
-				System.out.println(userlist.get(index).get_totalfee());
+				System.out.print(userlist.get(index).getID()+" ");
+				System.out.print(userlist.get(index).getname()+" ");
+				System.out.print(userlist.get(index).getbirthday()+" ");
+				System.out.print(userlist.get(index).getphone()+" ");
+				System.out.println(userlist.get(index).get_totalfee()+" ");
 				return index;
 			}
 		}
@@ -208,11 +208,11 @@ public class Admin_mode {
 
 	public void booklist() {
 		for (int i = 0; i < booklist.size(); i++) {
-			System.out.print(booklist.get(i).getcode());
-			System.out.print(booklist.get(i).getname());
-			System.out.print(booklist.get(i).getwriter());
-			System.out.print(booklist.get(i).getpublisher());
-			System.out.println(booklist.get(i).getstate());
+			System.out.print(booklist.get(i).getcode()+" ");
+			System.out.print(booklist.get(i).getname()+" ");
+			System.out.print(booklist.get(i).getwriter()+" ");
+			System.out.print(booklist.get(i).getpublisher()+" ");
+			System.out.println(booklist.get(i).getstate()+" ");
 		}
 	}
 
@@ -340,11 +340,11 @@ public class Admin_mode {
 		for (int i = 0; i < booklist.size(); i++) {
 			if (name.equals(booklist.get(i).getname())) {
 				index = i;
-				System.out.print(booklist.get(index).getcode());
-				System.out.print(booklist.get(index).getname());
-				System.out.print(booklist.get(index).getwriter());
-				System.out.print(booklist.get(index).getpublisher());
-				System.out.println(booklist.get(index).getstate());
+				System.out.print(booklist.get(index).getcode()+" ");
+				System.out.print(booklist.get(index).getname()+" ");
+				System.out.print(booklist.get(index).getwriter()+" ");
+				System.out.print(booklist.get(index).getpublisher()+" ");
+				System.out.println(booklist.get(index).getstate()+" ");
 				return index;
 			}
 		}
@@ -362,11 +362,11 @@ public class Admin_mode {
 		for (int i = 0; i < booklist.size(); i++) {
 			if (Integer.valueOf(code) == booklist.get(i).getcode()) {
 				index = i;
-				System.out.print(booklist.get(index).getcode());
-				System.out.print(booklist.get(index).getname());
-				System.out.print(booklist.get(index).getwriter());
-				System.out.print(booklist.get(index).getpublisher());
-				System.out.println(booklist.get(index).getstate());
+				System.out.print(booklist.get(index).getcode()+" ");
+				System.out.print(booklist.get(index).getname()+" ");
+				System.out.print(booklist.get(index).getwriter()+" ");
+				System.out.print(booklist.get(index).getpublisher()+" ");
+				System.out.println(booklist.get(index).getstate()+" ");
 				return index;
 			}
 		}
@@ -378,9 +378,9 @@ public class Admin_mode {
 		for (int i = 0; i < userlist.size(); i++) {
 			total_latefee(i);
 			if (userlist.get(i).get_totalfee() > 0) {
-				System.out.print(userlist.get(i).getID());
-				System.out.print(userlist.get(i).getname());
-				System.out.println(userlist.get(i).get_totalfee());
+				System.out.print(userlist.get(i).getID()+" ");
+				System.out.print(userlist.get(i).getname()+" ");
+				System.out.println(userlist.get(i).get_totalfee()+" ");
 			}
 		}
 	}
@@ -388,11 +388,11 @@ public class Admin_mode {
 	public void user_list() {
 		for (int i = 0; i < userlist.size(); i++) {
 			total_latefee(i);
-			System.out.print(userlist.get(i).getID());
-			System.out.print(userlist.get(i).getname());
-			System.out.print(userlist.get(i).getbirthday());
-			System.out.print(userlist.get(i).getphone());
-			System.out.println(userlist.get(i).get_totalfee());
+			System.out.print(userlist.get(i).getID()+" ");
+			System.out.print(userlist.get(i).getname()+" ");
+			System.out.print(userlist.get(i).getbirthday()+" ");
+			System.out.print(userlist.get(i).getphone()+" ");
+			System.out.println(userlist.get(i).get_totalfee()+" ");
 		}
 	}
 
