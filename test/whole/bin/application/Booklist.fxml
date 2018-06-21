@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="myBookList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Main">
+  <columns>
+    <TableColumn fx:id="codeColumn" prefWidth="75.0" text="Code" />
+    <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+      <TableColumn fx:id="writerColumn" prefWidth="75.0" text="Writer" />
+      <TableColumn fx:id="publisherColumn" prefWidth="75.0" text="Publisher" />
+      <TableColumn fx:id="stateColumn" prefWidth="75.0" text="State" />
+  </columns>
+</TableView>

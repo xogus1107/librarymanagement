@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="354.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adminmode_controller">
+   <children>
+      <TextField fx:id="setBname" layoutX="231.0" layoutY="139.0" prefHeight="23.0" prefWidth="183.0" />
+      <TextField fx:id="setBwriter" layoutX="231.0" layoutY="177.0" prefHeight="23.0" prefWidth="183.0" />
+      <TextField fx:id="setBpublisher" layoutX="231.0" layoutY="217.0" prefHeight="23.0" prefWidth="183.0" />
+      <Label alignment="CENTER" layoutX="116.0" layoutY="177.0" prefHeight="23.0" prefWidth="73.0" text="writer">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="112.0" layoutY="134.0" prefHeight="34.0" prefWidth="67.0" text="name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="86.0" layoutY="217.0" prefHeight="23.0" prefWidth="133.0" text="publisher">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="99.0" text="code">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="setBcode" layoutX="231.0" layoutY="98.0" prefHeight="23.0" prefWidth="183.0" />
+      <Label layoutX="57.0" layoutY="15.0" prefHeight="34.0" prefWidth="59.0" text="search">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBookName" layoutX="153.0" layoutY="20.0" prefHeight="23.0" prefWidth="200.0" />
+      <Button layoutX="387.0" layoutY="20.0" mnemonicParsing="false" onAction="#search" text="search" />
+      <Label fx:id="lcode" layoutX="59.0" layoutY="66.0" prefHeight="15.0" prefWidth="67.0" />
+      <Label fx:id="lname" layoutX="112.0" layoutY="66.0" prefHeight="15.0" prefWidth="67.0" />
+      <Label fx:id="lwriter" layoutX="209.0" layoutY="66.0" prefHeight="15.0" prefWidth="73.0" />
+      <Label fx:id="lpublisher" layoutX="297.0" layoutY="66.0" prefHeight="15.0" prefWidth="73.0" />
+      <Label fx:id="lstate" layoutX="385.0" layoutY="66.0" prefHeight="15.0" prefWidth="73.0" />
+      <Button layoutX="387.0" layoutY="271.0" mnemonicParsing="false" onAction="#set" prefHeight="47.0" prefWidth="73.0" text="set">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="lname1" layoutX="103.0" layoutY="287.0" prefHeight="34.0" prefWidth="73.0" />
+      <Label fx:id="lcode1" layoutX="17.0" layoutY="287.0" prefHeight="34.0" prefWidth="73.0" />
+      <Label fx:id="lwriter1" layoutX="190.0" layoutY="287.0" prefHeight="34.0" prefWidth="73.0" />
+      <Label fx:id="lpublisher1" layoutX="283.0" layoutY="287.0" prefHeight="34.0" prefWidth="73.0" />
+   </children>
+</AnchorPane>

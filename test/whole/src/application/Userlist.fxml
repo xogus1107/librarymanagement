@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+<TableView fx:id="myUserList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Userlist_controller">
+  <columns>
+    <TableColumn fx:id="IDColumn" prefWidth="87.0" text="ID" />
+    <TableColumn fx:id="usernameColumn" prefWidth="63.0" text="Name" />
+      <TableColumn fx:id="birthColumn" prefWidth="131.0" text="Birthday" />
+      <TableColumn fx:id="phoneColumn" prefWidth="124.0" text="Phone" />
+      <TableColumn fx:id="totalfeeColumn" prefWidth="92.0" text="Latefee" />
+  </columns>
+</TableView>
